@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { HomeView } from './components/HomeView';
 import { QuizView } from './components/QuizView';
@@ -12,13 +12,40 @@ import { LegalPrivacyModal } from './components/LegalPrivacyModal';
 import { Footer } from './components/Footer';
 import { Home, Sparkles, BookOpen, FileText } from 'lucide-react';
 
+const VALID_TABS = ['home', 'quiz', 'metodos', 'onde-aplicar', 'dupla-protecao', 'enfermagem', 'mitos', 'referencias'];
+
+function getInitialTab(): string {
+  const hash = window.location.hash.replace('#', '').trim();
+  return VALID_TABS.includes(hash) ? hash : 'home';
+}
+
 export function App() {
-  const [activeTab, setActiveTab] = useState<string>('home');
+  const [activeTab, setActiveTab] = useState<string>(getInitialTab);
   const [brandName] = useState<string>('Acolhe Mulher');
   const [privacyModalOpen, setPrivacyModalOpen] = useState<boolean>(false);
 
+  // Sync state when URL hash changes (browser Back/Forward)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').trim();
+      if (VALID_TABS.includes(hash)) {
+        setActiveTab(hash);
+      } else if (!hash) {
+        setActiveTab('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const handleSelectTab = (tab: string) => {
     setActiveTab(tab);
+    if (tab === 'home') {
+      window.history.pushState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = tab;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

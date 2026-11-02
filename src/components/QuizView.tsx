@@ -65,7 +65,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
             Trabalho de Conclusão de Curso (TCC) em Enfermagem • Atenção Primária à Saúde
           </div>
           <h1 className="text-xl font-bold text-slate-900">
-            EnfRepro: Relatório Clínico de Consulta em Saúde Reprodutiva
+            Acolhe Mulher: Relatório Clínico de Apoio ao Planejamento Reprodutivo
           </h1>
           <div className="text-xs text-slate-600 mt-1">
             Emitido para apoio à decisão compartilhada na Consulta de Enfermagem na UBS.
@@ -104,7 +104,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
             Seu Perfil & Recomendações do Ministério da Saúde
           </h2>
-          <p className="text-teal-50 text-sm sm:text-base max-w-2xl">
+          <p className="text-rose-100 text-sm sm:text-base max-w-2xl">
             Com base nas suas respostas, cruzamos seus dados com os Critérios Médicos de Elegibilidade da OMS e do Ministério da Saúde para identificar as melhores alternativas para sua vida.
           </p>
 

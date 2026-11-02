@@ -421,9 +421,12 @@ export const TECHNOLOGIES_USED = [
   }
 ];
 
-export const PROJECT_TREE_STRUCTURE = `enfrepro-tcc-enfermagem/
+export const PROJECT_TREE_STRUCTURE = `acolhe-mulher-tcc/
 ├── public/
 │   ├── favicon.svg              # Ícone minimalista de enfermagem
+│   ├── og-cover.png             # Imagem de compartilhamento social (1200x630)
+│   ├── robots.txt               # Configuração para indexação em buscadores
+│   └── sitemap.xml              # Mapa do site para Google
 ├── src/
 │   ├── components/
 │   │   ├── Header.tsx           # Navegação minimalista e acessível
@@ -444,7 +447,7 @@ export const PROJECT_TREE_STRUCTURE = `enfrepro-tcc-enfermagem/
 │   │   └── istEducation.ts      # Dados clínicos de prevenção combinada
 │   ├── utils/
 │   │   └── eligibilityAlgorithm.ts # Algoritmo de classificação clínica (OMS/MS)
-│   ├── App.tsx                  # Roteamento de abas minimalista
+│   ├── App.tsx                  # Roteamento de abas minimalista com sincronização de hash
 │   ├── index.css                # Estilos base e regras de impressão (@media print)
 │   └── main.tsx                 # Ponto de entrada React 19
 ├── package.json                 # Dependências e scripts
@@ -453,7 +456,7 @@ export const PROJECT_TREE_STRUCTURE = `enfrepro-tcc-enfermagem/
 export function generatePlainTextAbnt(): string {
   let content = '===========================================================\n';
   content += 'REFERÊNCIAS BIBLIOGRÁFICAS EM FORMATO ABNT (NBR 6023)\n';
-  content += 'Projeto TCC de Enfermagem: EnfRepro\n';
+  content += 'Projeto TCC de Enfermagem: Acolhe Mulher\n';
   content += 'Tecnologia Cuidativo-Educacional em Saúde Reprodutiva na APS\n';
   content += '===========================================================\n\n';
 
