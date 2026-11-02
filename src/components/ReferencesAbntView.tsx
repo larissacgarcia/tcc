@@ -98,11 +98,11 @@ export const ReferencesAbntView: React.FC = () => {
         </div>
 
         {/* Action Toolbar for TCC export */}
-        <div className="mt-6 pt-5 border-t border-slate-800 flex flex-wrap items-center gap-2.5 no-print">
+        <div className="mt-6 pt-5 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap items-stretch gap-2.5 no-print">
           <button
             type="button"
             onClick={handleCopyAll}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-xs"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-xs whitespace-nowrap"
           >
             {copiedAll ? <Check className="w-4 h-4 text-emerald-200" /> : <Copy className="w-4 h-4" />}
             <span>{copiedAll ? 'Copiado para o Clipboard!' : 'Copiar Todas em ABNT'}</span>
@@ -111,7 +111,7 @@ export const ReferencesAbntView: React.FC = () => {
           <button
             type="button"
             onClick={handleDownloadTxt}
-            className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-colors whitespace-nowrap"
           >
             <Download className="w-4 h-4 text-pink-400" />
             <span>Baixar .TXT (ABNT)</span>
@@ -120,7 +120,7 @@ export const ReferencesAbntView: React.FC = () => {
           <button
             type="button"
             onClick={handleDownloadBibTex}
-            className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-colors whitespace-nowrap"
           >
             <Code2 className="w-4 h-4 text-sky-400" />
             <span>Baixar BibTeX (.bib)</span>
@@ -129,7 +129,7 @@ export const ReferencesAbntView: React.FC = () => {
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-colors whitespace-nowrap"
           >
             <Printer className="w-4 h-4 text-rose-400" />
             <span>Imprimir / Gerar PDF</span>
@@ -142,7 +142,7 @@ export const ReferencesAbntView: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
           <div>
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-teal-700" />
+              <BookOpen className="w-5 h-5 text-rose-600" />
               <span>Lista de Referências Padronizadas (ABNT)</span>
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">

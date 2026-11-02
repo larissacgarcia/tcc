@@ -80,22 +80,23 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
               <span>Resultado Clínico do SUS</span>
             </span>
 
-            <div className="flex items-center gap-2 no-print">
+            <div className="flex items-center gap-2 no-print shrink-0">
               <button
                 type="button"
                 onClick={handlePrint}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3.5 py-2 rounded-xl border border-white/20 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3 py-2 rounded-xl border border-white/20 transition-colors whitespace-nowrap shrink-0"
                 title="Imprimir ou Salvar PDF"
               >
-                <Printer className="w-4 h-4" />
-                <span>Imprimir / Salvar PDF</span>
+                <Printer className="w-3.5 h-3.5" />
+                <span className="hidden xs:inline">Salvar </span>
+                <span>PDF</span>
               </button>
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3.5 py-2 rounded-xl border border-white/20 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3 py-2 rounded-xl border border-white/20 transition-colors whitespace-nowrap shrink-0"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="w-3.5 h-3.5" />
                 <span>Refazer</span>
               </button>
             </div>
@@ -466,7 +467,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
               type="button"
               onClick={handleBack}
               disabled={currentStepIndex === 0}
-              className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+              className={`inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition-colors shrink-0 ${
                 currentStepIndex === 0
                   ? 'text-slate-300 cursor-not-allowed'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -479,13 +480,13 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
             <button
               type="submit"
               disabled={!currentAnswer}
-              className={`inline-flex items-center gap-2 font-bold px-6 py-3 rounded-2xl shadow-sm transition-all ${
+              className={`inline-flex items-center justify-center gap-2 font-bold px-5 py-3 rounded-2xl shadow-sm transition-all whitespace-nowrap text-sm sm:text-base shrink-0 ${
                 currentAnswer
                   ? 'bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white shadow-rose-200/60 active:scale-95'
                   : 'bg-slate-200 text-slate-400 cursor-not-allowed'
               }`}
             >
-              <span>{isLastQuestion ? 'Ver Recomendação Clínica' : 'Próxima'}</span>
+              <span>{isLastQuestion ? 'Ver Recomendação' : 'Próxima'}</span>
               {isLastQuestion ? <Sparkles className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
             </button>
           </div>

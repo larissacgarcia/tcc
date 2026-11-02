@@ -1,4 +1,7 @@
-# Logs
+# Test outputs
+audit-result-*.png
+mobile-*.png
+
 logs
 *.log
 npm-debug.log*
