@@ -5,6 +5,7 @@ import {
   STORAGE_CUSTOM_QUESTIONS_KEY,
   type QuizQuestion 
 } from '../data/quizQuestions';
+import { decryptPatWithPassword } from '../utils/cryptoHelper';
 import { 
   Lock, KeyRound, CheckCircle2, AlertTriangle, RefreshCw, Save, 
   UploadCloud, ArrowLeft, ShieldCheck, Download, Trash2, 
@@ -27,6 +28,7 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onBackTo
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [inputPass, setInputPass] = useState<string>('');
   const [passError, setPassError] = useState<string | null>(null);
+  const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
 
   // GitHub PAT states
   const [pat, setPat] = useState<string>('');
@@ -55,15 +57,33 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onBackTo
     }
   }, []);
 
-  // --- PASSWORD AUTHENTICATION ---
-  const handleLogin = (e: React.FormEvent) => {
+  // --- PASSWORD AUTHENTICATION WITH AUTOMATIC TOKEN DECRYPTION ---
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const storedPass = localStorage.getItem(STORAGE_PASS_KEY) || DEFAULT_PASS;
-    if (inputPass.trim() === storedPass) {
-      setIsAuthenticated(true);
-      setPassError(null);
-    } else {
+    const trimmed = inputPass.trim();
+
+    if (trimmed !== storedPass) {
       setPassError('Senha incorreta. Verifique e tente novamente.');
+      return;
+    }
+
+    setIsLoggingIn(true);
+    setPassError(null);
+
+    try {
+      // Decifra o token automaticamente usando a senha informada
+      const decrypted = await decryptPatWithPassword(trimmed);
+      if (decrypted) {
+        setPat(decrypted);
+        localStorage.setItem(STORAGE_PAT_KEY, decrypted);
+        await verifyGithubToken(decrypted, false);
+      }
+      setIsAuthenticated(true);
+    } catch {
+      setIsAuthenticated(true);
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -312,9 +332,17 @@ export const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onBackTo
 
             <button
               type="submit"
-              className="w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 shadow-md shadow-rose-200/60 transition-all text-sm"
+              disabled={isLoggingIn}
+              className="w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 shadow-md shadow-rose-200/60 transition-all text-sm flex items-center justify-center gap-2"
             >
-              Destravar Painel de Edição
+              {isLoggingIn ? (
+                <>
+                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <span>Conectando com segurança...</span>
+                </>
+              ) : (
+                <span>Destravar Painel de Edição</span>
+              )}
             </button>
           </form>
 
