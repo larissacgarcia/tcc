@@ -1,0 +1,192 @@
+[
+  {
+    "id": "age",
+    "stepNumber": 1,
+    "totalSteps": 7,
+    "title": "Qual é a sua faixa de idade?",
+    "subtitle": "A idade orienta a segurança de certos hormônios (especialmente estrogênios em fumantes acima de 35 anos) e critérios legais de métodos definitivos.",
+    "tip": "No SUS, adolescentes têm direito a atendimento sigiloso e acesso a todos os métodos reversíveis sem necessidade de acompanhante.",
+    "options": [
+      {
+        "id": "under_20",
+        "label": "Menos de 20 anos (Adolescente / Jovem)",
+        "description": "Direito a sigilo e métodos reversíveis de alta eficácia como DIU e injetáveis."
+      },
+      {
+        "id": "20_to_34",
+        "label": "Entre 20 e 34 anos",
+        "description": "Fase com ampla elegibilidade para todos os métodos do Ministério da Saúde."
+      },
+      {
+        "id": "35_plus",
+        "label": "35 anos ou mais",
+        "description": "Requer atenção ao uso de estrogênios combinados, especialmente se houver fumo ou hipertensão."
+      }
+    ]
+  },
+  {
+    "id": "postpartum",
+    "stepNumber": 2,
+    "totalSteps": 7,
+    "title": "Você teve bebê recentemente ou está amamentando no peito?",
+    "subtitle": "O período pós-parto e a amamentação exigem métodos que não afetem a produção nem a qualidade do leite materno.",
+    "tip": "Métodos apenas com progestagênio (como a minipílula e injeção trimestral) e o DIU de Cobre não interferem na amamentação!",
+    "options": [
+      {
+        "id": "not_postpartum",
+        "label": "Não tive parto recente e não estou amamentando",
+        "description": "Todas as categorias de métodos podem ser consideradas."
+      },
+      {
+        "id": "breastfeeding_under_6w",
+        "label": "Estou amamentando e meu bebê tem menos de 6 semanas",
+        "description": "Fase de puerpério imediato: estrogênios são contraindicados; preferir DIU de cobre ou minipílula."
+      },
+      {
+        "id": "breastfeeding_over_6w",
+        "label": "Estou amamentando e meu bebê tem mais de 6 semanas",
+        "description": "DIU de Cobre, injeção trimestral e minipílula são excelentes escolhas."
+      },
+      {
+        "id": "postpartum_not_breastfeeding",
+        "label": "Tive parto recente (menos de 6 meses), mas não estou amamentando",
+        "description": "Retorno seguro para a maioria dos métodos conforme orientação puerperal."
+      }
+    ]
+  },
+  {
+    "id": "routine",
+    "stepNumber": 3,
+    "totalSteps": 7,
+    "title": "Como é a sua rotina com medicamentos?",
+    "subtitle": "A eficácia da pílula depende de tomar todo dia no mesmo horário. Outros métodos não dependem da sua memória.",
+    "tip": "Mulheres com rotinas intensas relatam muito mais tranquilidade com métodos de longa ação (DIU) ou injeções periódicas.",
+    "options": [
+      {
+        "id": "forgetful",
+        "label": "Esqueço com frequência ou minha rotina é muito imprevisível",
+        "description": "Prefiro algo que não dependa da minha memória (como DIU ou injeção trimestral/mensal)."
+      },
+      {
+        "id": "disciplined",
+        "label": "Tenho rotina bem certinha e consigo tomar todo dia no mesmo horário",
+        "description": "Tenho facilidade para manter hábitos diários (como tomar pílula com alarme)."
+      },
+      {
+        "id": "long_term_peace",
+        "label": "Quero esquecer por anos e ter a máxima proteção sem preocupação",
+        "description": "Quero um método de longa duração (LARC) como o DIU de Cobre (até 12 anos)."
+      }
+    ]
+  },
+  {
+    "id": "health_conditions",
+    "stepNumber": 4,
+    "totalSteps": 7,
+    "title": "Você possui alguma dessas condições de saúde?",
+    "subtitle": "Os Critérios Médicos de Elegibilidade da OMS e do Ministério da Saúde protegem você de riscos cardiovasculares e trombose.",
+    "tip": "Pílulas e injeções com estrogênio são contraindicadas para mulheres com enxaqueca com aura ou fumo acima de 35 anos.",
+    "options": [
+      {
+        "id": "none",
+        "label": "Nenhuma dessas condições (sou saudável)",
+        "description": "Sem histórico de pressão alta, trombose ou enxaqueca com aura."
+      },
+      {
+        "id": "smoking_over_35",
+        "label": "Fumo cigarro e tenho 35 anos ou mais",
+        "description": "Estrogênio combinado aumenta risco cardiovascular grave (Cat. 3/4 do MS)."
+      },
+      {
+        "id": "hypertension",
+        "label": "Tenho Pressão Alta (Hipertensão Arterial diagnosticada)",
+        "description": "Requer cautela com estrogênios e monitoramento da pressão na UBS."
+      },
+      {
+        "id": "migraine_aura",
+        "label": "Tenho enxaqueca com aura (luzes brilhantes, pontos cegos antes da dor)",
+        "description": "Estrogênios são contraindicados pelo Ministério da Saúde (risco de AVC)."
+      },
+      {
+        "id": "thrombosis_history",
+        "label": "Já tive trombose venosa, embolia pulmonar ou infarto",
+        "description": "Contraindicação formal a qualquer estrogênio. DIU de cobre é a opção mais segura."
+      }
+    ]
+  },
+  {
+    "id": "menstrual_bleeding",
+    "stepNumber": 5,
+    "totalSteps": 7,
+    "title": "Como costuma ser a sua menstruação e cólicas?",
+    "subtitle": "Certos métodos podem aumentar o fluxo temporariamente, enquanto outros ajudam a diminuir ou até pausar a menstruação.",
+    "tip": "O DIU de Cobre pode aumentar o fluxo nos primeiros meses, enquanto o injetável trimestral costuma reduzir cólicas.",
+    "options": [
+      {
+        "id": "heavy_cramps",
+        "label": "Fluxo intenso e/ou cólicas muito fortes",
+        "description": "Métodos hormonais (como injetáveis) costumam reduzir o fluxo e a dor cólica."
+      },
+      {
+        "id": "moderate_light",
+        "label": "Fluxo leve a moderado, sem grandes dores",
+        "description": "Adaptação excelente para qualquer método, incluindo o DIU de Cobre."
+      },
+      {
+        "id": "want_amenorrhea",
+        "label": "Gostaria de parar ou reduzir muito a menstruação por praticidade",
+        "description": "Injeção trimestral e métodos contínuos têm alta taxa de amenorreia."
+      }
+    ]
+  },
+  {
+    "id": "reproductive_goals",
+    "stepNumber": 6,
+    "totalSteps": 7,
+    "title": "Qual é o seu objetivo em relação a ter filhos?",
+    "subtitle": "O tempo que você pretende esperar para engravidar ajuda a escolher entre métodos de curta, longa duração ou definitivos.",
+    "tip": "O retorno da fertilidade após retirar o DIU ou parar a pílula é imediato; com a injeção trimestral pode levar de 6 a 10 meses.",
+    "options": [
+      {
+        "id": "soon",
+        "label": "Talvez em breve (menos de 1 ano ou futuro próximo)",
+        "description": "Métodos com rápido retorno da fertilidade (pílula combinada, camisinha ou injeção mensal)."
+      },
+      {
+        "id": "few_years",
+        "label": "Quero esperar de 2 a 5 anos (ou mais)",
+        "description": "DIU de Cobre oferece tranquilidade e segurança por anos, com reversão quando quiser."
+      },
+      {
+        "id": "never_or_done",
+        "label": "Não quero ter filhos (ou já tive e não quero mais nenhum)",
+        "description": "Pode avaliar métodos de longuíssima duração (DIU de Cobre de 10-12 anos) ou Laqueadura/Vasectomia pelo SUS."
+      }
+    ]
+  },
+  {
+    "id": "hormone_preference",
+    "stepNumber": 7,
+    "totalSteps": 7,
+    "title": "Você tem preferência sobre o uso de hormônios?",
+    "subtitle": "Você prefere o corpo funcionando no seu ritmo biológico natural ou tem interesse nos efeitos dos hormônios?",
+    "tip": "O DIU de Cobre é 100% não hormonal e mantém a ovulação natural sem alterar peso, humor ou libido.",
+    "options": [
+      {
+        "id": "prefer_no_hormones",
+        "label": "Quero um método 100% SEM HORMÔNIOS",
+        "description": "Quero manter meu ciclo ovulatório natural (DIU de Cobre e Preservativos)."
+      },
+      {
+        "id": "hormones_ok",
+        "label": "Não tenho problema com hormônios, busco a maior conveniência",
+        "description": "Aberta a pílulas, injeções mensais ou trimestrais."
+      },
+      {
+        "id": "prefer_non_daily",
+        "label": "Tanto faz, desde que seja seguro e gratuito no SUS!",
+        "description": "A prioridade é eficácia, praticidade e acolhimento na UBS."
+      }
+    ]
+  }
+]

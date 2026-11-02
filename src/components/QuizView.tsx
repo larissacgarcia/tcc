@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { QUIZ_QUESTIONS } from '../data/quizQuestions';
+import { getQuizQuestions } from '../data/quizQuestions';
 import { evaluateContraceptionEligibility } from '../utils/eligibilityAlgorithm';
 import type { QuizAnswers, QuizAnalysisResult } from '../utils/eligibilityAlgorithm';
 import { Sparkles, ArrowRight, ArrowLeft, RotateCcw, Printer, CheckCircle, AlertTriangle, XCircle, Info, Stethoscope, FileText, MapPin } from 'lucide-react';
@@ -13,8 +13,9 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [result, setResult] = useState<QuizAnalysisResult | null>(null);
 
-  const currentQuestion = QUIZ_QUESTIONS[currentStepIndex];
-  const isLastQuestion = currentStepIndex === QUIZ_QUESTIONS.length - 1;
+  const questions = getQuizQuestions();
+  const currentQuestion = questions[currentStepIndex] || questions[0];
+  const isLastQuestion = currentStepIndex === questions.length - 1;
 
   const currentAnswer = answers[currentQuestion.id as keyof QuizAnswers];
 
@@ -370,7 +371,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
   }
 
   // --- QUESTION STEP VIEW ---
-  const progressPercent = Math.round(((currentStepIndex + 1) / QUIZ_QUESTIONS.length) * 100);
+  const progressPercent = Math.round(((currentStepIndex + 1) / questions.length) * 100);
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
@@ -378,7 +379,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
       <div className="mb-6 space-y-2">
         <div className="flex items-center justify-between text-xs font-bold text-slate-500">
           <span className="text-rose-600 uppercase tracking-wider font-extrabold">
-            Pergunta {currentStepIndex + 1} de {QUIZ_QUESTIONS.length}
+            Pergunta {currentStepIndex + 1} de {questions.length}
           </span>
           <span className="flex items-center gap-1.5 text-slate-400">
             <span>Privacidade Ativa (LGPD)</span>

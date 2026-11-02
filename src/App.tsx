@@ -8,11 +8,12 @@ import { IstEducationView } from './components/IstEducationView';
 import { NursingAndRightsView } from './components/NursingAndRightsView';
 import { MythsAndFactsView } from './components/MythsAndFactsView';
 import { ReferencesAbntView } from './components/ReferencesAbntView';
+import { AdminDashboardView } from './components/AdminDashboardView';
 import { LegalPrivacyModal } from './components/LegalPrivacyModal';
 import { Footer } from './components/Footer';
 import { Home, Sparkles, BookOpen, FileText } from 'lucide-react';
 
-const VALID_TABS = ['home', 'quiz', 'metodos', 'onde-aplicar', 'dupla-protecao', 'enfermagem', 'mitos', 'referencias'];
+const VALID_TABS = ['home', 'quiz', 'metodos', 'onde-aplicar', 'dupla-protecao', 'enfermagem', 'mitos', 'referencias', 'admin'];
 
 function getInitialTab(): string {
   const hash = window.location.hash.replace('#', '').trim();
@@ -88,6 +89,10 @@ export function App() {
         {activeTab === 'mitos' && <MythsAndFactsView />}
 
         {activeTab === 'referencias' && <ReferencesAbntView />}
+
+        {activeTab === 'admin' && (
+          <AdminDashboardView onBackToApp={() => handleSelectTab('quiz')} />
+        )}
       </main>
 
       {/* Footer */}
