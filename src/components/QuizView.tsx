@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { getQuizQuestions } from '../data/quizQuestions';
 import { evaluateContraceptionEligibility } from '../utils/eligibilityAlgorithm';
 import type { QuizAnswers, QuizAnalysisResult } from '../utils/eligibilityAlgorithm';
-import { Sparkles, ArrowRight, ArrowLeft, RotateCcw, Printer, CheckCircle, AlertTriangle, XCircle, Info, Stethoscope, FileText, MapPin } from 'lucide-react';
+import { Sparkles, ArrowRight, ArrowLeft, RotateCcw, Printer, CheckCircle, AlertTriangle, XCircle, Info, Stethoscope, FileText, MapPin, Share2, Check } from 'lucide-react';
+import { EmergencyContraceptionCard } from './EmergencyContraceptionCard';
 
 interface QuizViewProps {
   onGoToUbs: () => void;
@@ -12,6 +13,35 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [result, setResult] = useState<QuizAnalysisResult | null>(null);
+  const [copiedShareLink, setCopiedShareLink] = useState(false);
+
+  const handleShare = async () => {
+    const shareUrl = window.location.origin + window.location.pathname + '#quiz';
+    const shareTitle = 'Acolhe Mulher | Métodos Contraceptivos no SUS';
+    const shareText = 'Descubra o método contraceptivo ideal para sua rotina com acolhimento, respeito e respaldo oficial do SUS no Acolhe Mulher:';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl,
+        });
+        return;
+      } catch (err) {
+        if (err && typeof err === 'object' && 'name' in err && (err as { name: string }).name === 'AbortError') return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareText + ' ' + shareUrl);
+      setCopiedShareLink(true);
+      setTimeout(() => setCopiedShareLink(false), 3000);
+    } catch {
+      setCopiedShareLink(true);
+      setTimeout(() => setCopiedShareLink(false), 3000);
+    }
+  };
 
   const questions = getQuizQuestions();
   const currentQuestion = questions[currentStepIndex] || questions[0];
@@ -82,6 +112,15 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
             </span>
 
             <div className="flex items-center gap-2 no-print shrink-0">
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3 py-2 rounded-xl border border-white/20 transition-colors whitespace-nowrap shrink-0"
+                title="Compartilhar com uma amiga"
+              >
+                {copiedShareLink ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Share2 className="w-3.5 h-3.5" />}
+                <span>{copiedShareLink ? 'Copiado!' : 'Compartilhar'}</span>
+              </button>
               <button
                 type="button"
                 onClick={handlePrint}
@@ -334,7 +373,10 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
             </div>
           </div>
 
-          {/* Dual protection banner */}
+          {/* Módulo de Destaque - Anticoncepção de Emergência (AE) no SUS */}
+        <EmergencyContraceptionCard onGoToUbs={onGoToUbs} />
+
+        {/* Dual protection banner */}
           <div className="bg-white rounded-2xl p-4 border border-indigo-100 flex items-start gap-3">
             <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
               <Sparkles className="w-4 h-4" />
@@ -354,6 +396,15 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
             >
               <MapPin className="w-4 h-4" />
               <span>Ver Guia Passo a Passo da UBS</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleShare}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 font-bold px-4 py-3 rounded-2xl shadow-2xs text-sm transition-colors"
+            >
+              {copiedShareLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4 text-rose-600" />}
+              <span>{copiedShareLink ? 'Link Copiado! 🎉' : 'Compartilhar com uma Amiga'}</span>
             </button>
 
             <button

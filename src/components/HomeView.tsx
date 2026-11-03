@@ -1,4 +1,5 @@
 import React from 'react';
+import { EmergencyContraceptionCard } from './EmergencyContraceptionCard';
 import {
   Sparkles,
   FileText,
@@ -137,6 +138,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           </div>
         </section>
+
+        {/* Modulo de Anticoncepcao de Emergencia (AE) no SUS */}
+        <EmergencyContraceptionCard onGoToUbs={() => onNavigate('onde-aplicar')} compact={true} />
 
         {/* Discreet Privacy & LGPD Section */}
         <section className="bg-white/80 border border-rose-100 rounded-3xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-slate-600">
