@@ -3,7 +3,6 @@ import { getQuizQuestions } from '../data/quizQuestions';
 import { evaluateContraceptionEligibility } from '../utils/eligibilityAlgorithm';
 import type { QuizAnswers, QuizAnalysisResult } from '../utils/eligibilityAlgorithm';
 import { Sparkles, ArrowRight, ArrowLeft, RotateCcw, Printer, CheckCircle, AlertTriangle, XCircle, Info, Stethoscope, FileText, MapPin, Share2, Check } from 'lucide-react';
-import { EmergencyContraceptionCard } from './EmergencyContraceptionCard';
 
 interface QuizViewProps {
   onGoToUbs: () => void;
@@ -372,9 +371,6 @@ export const QuizView: React.FC<QuizViewProps> = ({ onGoToUbs }) => {
               </ul>
             </div>
           </div>
-
-          {/* Módulo de Destaque - Anticoncepção de Emergência (AE) no SUS */}
-        <EmergencyContraceptionCard onGoToUbs={onGoToUbs} />
 
         {/* Dual protection banner */}
           <div className="bg-white rounded-2xl p-4 border border-indigo-100 flex items-start gap-3">
